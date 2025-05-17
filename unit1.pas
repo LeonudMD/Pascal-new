@@ -1,0 +1,179 @@
+unit Unit1;
+
+{$mode objfpc}{$H+}
+
+interface
+
+uses
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls,
+  ComCtrls, DBCtrls, DBGrids, uSolver, dbf, DB, Model;
+
+type
+
+  { TForm1 }
+
+  TForm1 = class(TForm)
+    Button1: TButton;
+    CheckBox1: TCheckBox;
+    DataSource1: TDataSource;
+    Dbf1: TDbf;
+    DBGrid1: TDBGrid;
+    DBNavigator1: TDBNavigator;
+    poisk: TEdit;
+    ploshadbatarei: TEdit;
+    kolvoball: TEdit;
+    Label24: TLabel;
+    Label25: TLabel;
+    otnmassSPH: TEdit;
+    Label23: TLabel;
+    PageControl1: TPageControl;
+    StatusBar1: TStatusBar;
+    TabSheet1: TTabSheet;
+    TabSheet2: TTabSheet;
+    udmasskotsr: TEdit;
+    Label22: TLabel;
+    otnmassDY: TEdit;
+    Label21: TLabel;
+    udmassDY: TEdit;
+    Label20: TLabel;
+    udmassEY: TEdit;
+    energKPD: TEdit;
+    Label18: TLabel;
+    Label19: TLabel;
+    tyagKPD: TEdit;
+    Label17: TLabel;
+    Moshnost: TEdit;
+    Label16: TLabel;
+    tyaga: TEdit;
+    Label15: TLabel;
+    startmass: TEdit;
+    exckon: TEdit;
+    Label13: TLabel;
+    Label14: TLabel;
+    radiuskon: TEdit;
+    naklkon: TEdit;
+    exc0: TEdit;
+    Label10: TLabel;
+    Label11: TLabel;
+    Label12: TLabel;
+    Label9: TLabel;
+    radius0: TEdit;
+    nakl0: TEdit;
+    ScorostIst: TEdit;
+    MotorVr: TEdit;
+    MassaPN: TEdit;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
+    procedure Button1Click(Sender: TObject);
+    procedure CheckBox1Change(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure poiskChange(Sender: TObject);
+  private
+
+  public
+
+  end;
+
+var
+  Form1: TForm1;
+  param: TMTAParam;
+  DYParam: TTaskParam;
+  r0: real;
+  rk: real;
+  i0: real;
+  ik: real;
+  Tm: real;
+  mpn:real;
+  rate : real;
+  M0: real;
+  AlphaEY:real;
+  GammaDY:real;
+  GammaK:real;
+  GammaSPX:real;
+  NuT:real;
+  NuEY:real;
+  bal: integer;
+
+
+implementation
+
+{$R *.lfm}
+
+{ TForm1 }
+
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+  Dbf1.FilePath:=ExtractFilePath(Application.ExeName);
+ Dbf1.FilePathFull:=ExtractFilePath(Application.ExeName);
+ if not FileExists('engines.dbf') then begin
+
+  with Dbf1.FieldDefs do begin
+   Add('№', ftAutoInc, 0, True);
+   Add('Название', ftString, 16, True);
+   Add('Тяга, мН', ftString, 16, True);
+   Add('Удельный импульс, с', ftString, 16, True);
+   Add('Потребляемая мощность, кВт', ftString, 16, True);
+   Add('КПД, %', ftString, 16, True);
+   Add('Ресурс, ч', ftString, 16, True);
+   Add('Масса, кг', ftString, 16, True);
+  end;
+
+  Dbf1.CreateTable;
+ end;
+
+ Dbf1.Open;
+
+end;
+
+procedure TForm1.CheckBox1Change(Sender: TObject);
+begin
+ Dbf1.Filtered:=(Sender as TCheckBox).Checked;
+end;
+
+procedure TForm1.Button1Click(Sender: TObject);
+ var P, Mpn, M0, a0, c, Tm, copt, i0, e0, r0, ik, ek, rk, AlphaEY, GammaDY,
+    GammaK, GammaSPX, NuT, NuEY, bal, SSB:real;
+
+begin
+  Mpn:=StrToFloat(MassaPN.Text);
+  Tm:=StrToFloat(MotorVr.Text);
+  c:=StrToFloat(ScorostIst.Text);
+  i0:=StrToFloat(nakl0.Text);
+  i0:=i0*pi/180;
+  r0:=StrToFloat(radius0.Text);
+  e0:=StrToFloat(exc0.Text);
+  ik:=StrToFloat(naklkon.Text);
+  ik:=ik*pi/180;
+  rk:=StrToFloat(radiuskon.Text);
+  ek:=StrToFloat(exckon.Text);
+  AlphaEY:=StrToFloat(udmassEY.Text);
+  GammaDY:= StrToFloat(udmassDY.Text);
+  GammaK:= StrToFloat(udmasskotsr.Text);
+  GammaSPX:= StrToFloat(otnmassSPH.Text);
+  NuT:=StrToFloat(tyagKPD.Text);
+  NuEY:=StrToFloat(energKPD.Text);
+  bal:=StrToFloat(kolvoball.Text);
+  InitTaskParam(DYparam, r0, i0, rk, ik, Tm, rate);
+  M0:=GetStartMass(param, c*1000, Tm*24*3600, DYParam.Vxk*1000, mpn);
+  P:=GetMTAPower(param,c*1000, m0*DYParam.begin_accel*1000);
+  copt:=GetRateopt(param, Tm*24*3600);
+  startmass.Text:=FloatToStr(M0);
+
+end;
+
+procedure TForm1.poiskChange(Sender: TObject);
+var s: string;
+begin
+ s:=Format('Название="%s"', [(Sender as TEdit).Text]);
+ StatusBar1.SimpleText:=s;
+ Dbf1.Filter:=s;
+end;
+
+end.
+

@@ -1,0 +1,432 @@
+object Form1: TForm1
+  Left = -28
+  Height = 718
+  Top = 161
+  Width = 1337
+  BorderStyle = bsSingle
+  Caption = 'Form1'
+  ClientHeight = 718
+  ClientWidth = 1337
+  DesignTimePPI = 144
+  OnCreate = FormCreate
+  Position = poScreenCenter
+  LCLVersion = '3.8.0.0'
+  object Label1: TLabel
+    Left = 288
+    Height = 25
+    Top = 0
+    Width = 188
+    Caption = 'Начальные параметры'
+  end
+  object Label2: TLabel
+    Left = 26
+    Height = 25
+    Top = 46
+    Width = 236
+    Caption = 'Масса полезной нагрузки, кг'
+  end
+  object Label3: TLabel
+    Left = 26
+    Height = 25
+    Top = 104
+    Width = 176
+    Caption = 'Моторное время, сут'
+  end
+  object Label4: TLabel
+    Left = 27
+    Height = 25
+    Top = 160
+    Width = 201
+    Caption = 'Скорость истечения, м/с'
+  end
+  object Label5: TLabel
+    Left = 264
+    Height = 25
+    Top = 32
+    Width = 254
+    Caption = 'Параметры начальной орбиты'
+  end
+  object Label6: TLabel
+    Left = 280
+    Height = 25
+    Top = 56
+    Width = 145
+    Caption = 'Наклонение, град'
+  end
+  object Label7: TLabel
+    Left = 280
+    Height = 25
+    Top = 112
+    Width = 87
+    Caption = 'Радиус, км'
+  end
+  object Label8: TLabel
+    Left = 280
+    Height = 25
+    Top = 168
+    Width = 127
+    Caption = 'Эксцентриситет'
+  end
+  object MassaPN: TEdit
+    Left = 26
+    Height = 33
+    Top = 72
+    Width = 214
+    TabOrder = 0
+  end
+  object MotorVr: TEdit
+    Left = 27
+    Height = 33
+    Top = 128
+    Width = 211
+    TabOrder = 1
+  end
+  object ScorostIst: TEdit
+    Left = 27
+    Height = 33
+    Top = 184
+    Width = 211
+    TabOrder = 2
+  end
+  object nakl0: TEdit
+    Left = 280
+    Height = 33
+    Top = 80
+    Width = 208
+    TabOrder = 3
+  end
+  object radius0: TEdit
+    Left = 280
+    Height = 33
+    Top = 136
+    Width = 208
+    TabOrder = 4
+  end
+  object exc0: TEdit
+    Left = 280
+    Height = 33
+    Top = 192
+    Width = 208
+    TabOrder = 5
+  end
+  object Label9: TLabel
+    Left = 552
+    Height = 25
+    Top = 32
+    Width = 247
+    Caption = 'Параметры конечной орбиты'
+  end
+  object Label10: TLabel
+    Left = 568
+    Height = 25
+    Top = 56
+    Width = 145
+    Caption = 'Наклонение, град'
+  end
+  object Label11: TLabel
+    Left = 568
+    Height = 25
+    Top = 112
+    Width = 87
+    Caption = 'Радиус, км'
+  end
+  object Label12: TLabel
+    Left = 568
+    Height = 25
+    Top = 168
+    Width = 127
+    Caption = 'Эксцентриситет'
+  end
+  object naklkon: TEdit
+    Left = 567
+    Height = 33
+    Top = 80
+    Width = 217
+    TabOrder = 6
+  end
+  object radiuskon: TEdit
+    Left = 568
+    Height = 33
+    Top = 136
+    Width = 216
+    TabOrder = 7
+  end
+  object exckon: TEdit
+    Left = 568
+    Height = 33
+    Top = 192
+    Width = 216
+    TabOrder = 8
+  end
+  object Label13: TLabel
+    Left = 952
+    Height = 25
+    Top = 24
+    Width = 208
+    Caption = 'Вычисленные параметры'
+  end
+  object Label14: TLabel
+    Left = 816
+    Height = 25
+    Top = 56
+    Width = 161
+    Caption = 'Стартовая масса, кг'
+  end
+  object startmass: TEdit
+    Left = 816
+    Height = 33
+    Top = 80
+    Width = 192
+    TabOrder = 9
+  end
+  object Label15: TLabel
+    Left = 816
+    Height = 25
+    Top = 112
+    Width = 56
+    Caption = 'Тяга, Н'
+  end
+  object tyaga: TEdit
+    Left = 816
+    Height = 33
+    Top = 136
+    Width = 192
+    TabOrder = 10
+  end
+  object Label16: TLabel
+    Left = 816
+    Height = 25
+    Top = 168
+    Width = 161
+    Caption = 'Мощность ЭРДУ, Вт'
+  end
+  object Moshnost: TEdit
+    Left = 816
+    Height = 33
+    Top = 192
+    Width = 192
+    TabOrder = 11
+  end
+  object Label17: TLabel
+    Left = 26
+    Height = 25
+    Top = 216
+    Width = 109
+    Caption = 'Тяговый КПД'
+  end
+  object tyagKPD: TEdit
+    Left = 27
+    Height = 33
+    Top = 240
+    Width = 211
+    TabOrder = 12
+  end
+  object Label18: TLabel
+    Left = 27
+    Height = 25
+    Top = 272
+    Width = 170
+    Caption = 'Энергетический КПД'
+  end
+  object energKPD: TEdit
+    Left = 27
+    Height = 33
+    Top = 296
+    Width = 211
+    TabOrder = 13
+  end
+  object Label19: TLabel
+    Left = 27
+    Height = 25
+    Top = 328
+    Width = 202
+    Caption = 'Удельная масса ЭУ, кг/Вт'
+  end
+  object udmassEY: TEdit
+    Left = 27
+    Height = 33
+    Top = 352
+    Width = 211
+    TabOrder = 14
+  end
+  object Label20: TLabel
+    Left = 27
+    Height = 25
+    Top = 384
+    Width = 199
+    Caption = 'Удельная масса ДУ, кг/Н'
+  end
+  object udmassDY: TEdit
+    Left = 27
+    Height = 33
+    Top = 408
+    Width = 211
+    TabOrder = 15
+  end
+  object Label21: TLabel
+    Left = 27
+    Height = 25
+    Top = 440
+    Width = 201
+    Caption = 'Относительная масса ДУ'
+  end
+  object otnmassDY: TEdit
+    Left = 27
+    Height = 33
+    Top = 464
+    Width = 209
+    TabOrder = 16
+  end
+  object Label22: TLabel
+    Left = 27
+    Height = 25
+    Top = 496
+    Width = 282
+    Caption = 'Удельная масса конструкции, кг/Н'
+  end
+  object udmasskotsr: TEdit
+    Left = 27
+    Height = 33
+    Top = 520
+    Width = 211
+    TabOrder = 17
+  end
+  object Label23: TLabel
+    Left = 27
+    Height = 25
+    Top = 552
+    Width = 214
+    Caption = 'Относительная масса СПХ'
+  end
+  object otnmassSPH: TEdit
+    Left = 26
+    Height = 33
+    Top = 576
+    Width = 210
+    TabOrder = 18
+  end
+  object PageControl1: TPageControl
+    Left = 576
+    Height = 404
+    Top = 232
+    Width = 736
+    ActivePage = TabSheet1
+    TabIndex = 0
+    TabOrder = 19
+    object TabSheet1: TTabSheet
+      Caption = 'Выбор двигателя'
+      ClientHeight = 366
+      ClientWidth = 728
+      object StatusBar1: TStatusBar
+        Left = 0
+        Height = 36
+        Top = 330
+        Width = 728
+        Panels = <>
+      end
+      object DBNavigator1: TDBNavigator
+        Left = 400
+        Height = 38
+        Top = 296
+        Width = 362
+        BevelOuter = bvNone
+        ChildSizing.EnlargeHorizontal = crsScaleChilds
+        ChildSizing.EnlargeVertical = crsScaleChilds
+        ChildSizing.ShrinkHorizontal = crsScaleChilds
+        ChildSizing.ShrinkVertical = crsScaleChilds
+        ChildSizing.Layout = cclLeftToRightThenTopToBottom
+        ChildSizing.ControlsPerLine = 100
+        ClientHeight = 38
+        ClientWidth = 362
+        DataSource = DataSource1
+        Options = []
+        TabOrder = 4
+      end
+      object DBGrid1: TDBGrid
+        Left = 0
+        Height = 296
+        Top = 0
+        Width = 728
+        Color = clWindow
+        Columns = <>
+        DataSource = DataSource1
+        TabOrder = 3
+      end
+      object poisk: TEdit
+        Left = 112
+        Height = 33
+        Top = 297
+        Width = 272
+        TabOrder = 2
+        OnChange = poiskChange
+      end
+      object CheckBox1: TCheckBox
+        Left = 16
+        Height = 29
+        Top = 301
+        Width = 84
+        Caption = 'Фильтр'
+        TabOrder = 1
+        OnChange = CheckBox1Change
+      end
+    end
+    object TabSheet2: TTabSheet
+      Caption = 'TabSheet2'
+    end
+  end
+  object Label24: TLabel
+    Left = 264
+    Height = 25
+    Top = 272
+    Width = 250
+    Caption = 'Количество шар-баллонов, шт'
+  end
+  object kolvoball: TEdit
+    Left = 264
+    Height = 33
+    Top = 296
+    Width = 224
+    TabOrder = 20
+  end
+  object Label25: TLabel
+    Left = 1032
+    Height = 25
+    Top = 56
+    Width = 283
+    Caption = 'Площадь солнечных батарей, м^2'
+  end
+  object ploshadbatarei: TEdit
+    Left = 1035
+    Height = 33
+    Top = 80
+    Width = 200
+    TabOrder = 21
+  end
+  object Button1: TButton
+    Left = 1080
+    Height = 38
+    Top = 187
+    Width = 113
+    Caption = 'Вычислить'
+    TabOrder = 22
+    OnClick = Button1Click
+  end
+  object Dbf1: TDbf
+    Exclusive = True
+    FilePath = 'C:\Учёба\двигатели\приложение\новая форма\'
+    IndexDefs = <    
+      item
+        Options = []
+      end>
+    TableName = 'engines.dbf'
+    TableLevel = 7
+    FilterOptions = []
+    Left = 528
+    Top = 264
+  end
+  object DataSource1: TDataSource
+    DataSet = Dbf1
+    Left = 528
+    Top = 344
+  end
+end
