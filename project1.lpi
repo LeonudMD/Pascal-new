@@ -49,14 +49,14 @@
         <UnitName Value="Unit1"/>
       </Unit>
       <Unit>
-        <Filename Value="..\usolver.pas"/>
-        <IsPartOfProject Value="True"/>
-        <UnitName Value="uSolver"/>
-      </Unit>
-      <Unit>
         <Filename Value="model.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="Model"/>
+      </Unit>
+      <Unit>
+        <Filename Value="usolver.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uSolver"/>
       </Unit>
     </Units>
   </ProjectOptions>
@@ -68,10 +68,12 @@
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
-      <OtherUnitFiles Value=".."/>
       <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <Linking>
+      <Debugging>
+        <DebugInfoType Value="dsDwarf3"/>
+      </Debugging>
       <Options>
         <Win32>
           <GraphicApplication Value="True"/>
